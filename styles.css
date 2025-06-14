@@ -61,29 +61,47 @@ h1 i {
 
 .menu-panel {
   position: absolute;
-  top: 4.2em;
+  top: 4.2em; /* Теперь четко под иконкой */
   left: 1em;
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 6px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  padding: 0.5em 1em;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 0.8em 1em;
   display: none;
   flex-direction: column;
+  z-index: 1001;
+}
+
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50vh; /* Половина экрана */
+  background: rgba(0, 0, 0, 0.4); /* Полупрозрачный эффект */
+  display: none;
   z-index: 1000;
+}
+
+/* Анимация появления */
+.menu-panel, .menu-overlay {
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .menu-panel a {
   display: block;
   text-decoration: none;
   color: #444;
-  padding: 0.4em 0;
+  padding: 0.6em 0;
   font-weight: 500;
   transition: color 0.3s;
 }
+
 .menu-panel a:hover {
   color: #1792dd;
 }
+
 
 
 @media (min-width: 600px) {
