@@ -123,8 +123,8 @@ function loadGoogleAnalytics() {
 </script>
   
 <!-- Menu script -->
-  
-<script>
+
+  <script>
   function toggleMenu() {
     const panel = document.getElementById('menuPanel');
     const overlay = document.getElementById('menuOverlay');
@@ -132,29 +132,28 @@ function loadGoogleAnalytics() {
 
     if (!panel || !overlay || !icon) return;
 
-    // Получаем положение иконки
+    // Получаем координаты иконки
     const iconRect = icon.getBoundingClientRect();
     panel.style.top = `${iconRect.bottom + window.scrollY}px`;
     panel.style.left = `${iconRect.left + window.scrollX}px`;
 
-    // Переключаем отображение
-    const isVisible = panel.style.display === 'flex';
-    panel.style.display = isVisible ? 'none' : 'flex';
-    overlay.style.display = isVisible ? 'none' : 'block';
+    panel.classList.toggle('show');
+    overlay.classList.toggle('show');
   }
 
-  // Закрытие меню при клике вне области
+  // Закрытие при клике вне области
   document.addEventListener('click', function (e) {
     const panel = document.getElementById('menuPanel');
     const overlay = document.getElementById('menuOverlay');
     const icon = document.querySelector('.menu-icon');
 
     if (!panel.contains(e.target) && !icon.contains(e.target)) {
-      panel.style.display = 'none';
-      overlay.style.display = 'none';
+      panel.classList.remove('show');
+      overlay.classList.remove('show');
     }
   });
 </script>
+
 
 
 
