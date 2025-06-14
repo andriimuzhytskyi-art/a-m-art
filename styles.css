@@ -47,13 +47,44 @@ h1 i {
 /* Menu */
 .menu-icon {
   position: absolute;
-  top: 1.2em;
+  top: 1.5em;
   left: 1em;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: #555;
   cursor: pointer;
-  z-index: 999;
+  z-index: 1001;
+  transition: color 0.3s ease;
 }
+.menu-icon:hover {
+  color: #1792dd;
+}
+
+.menu-panel {
+  position: absolute;
+  top: 4.2em;
+  left: 1em;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 0.5em 1em;
+  display: none;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.menu-panel a {
+  display: block;
+  text-decoration: none;
+  color: #444;
+  padding: 0.4em 0;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.menu-panel a:hover {
+  color: #1792dd;
+}
+
 
 @media (min-width: 600px) {
   .menu-icon {
