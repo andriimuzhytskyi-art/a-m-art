@@ -70,11 +70,11 @@ h1 i {
 /* 📌 Панель меню */
 .menu-panel {
   position: absolute;
-  top: 5em; /* Фиксируем под иконкой */
-  left: 1em; /* Фиксируем у края контейнера */
+  top: 5em; 
+  left: 1em; 
   width: fit-content;
   background: rgba(255, 255, 255, 0.9);
-  padding: 0.8em;
+  padding-top: 0.8em;
   display: none;
   flex-direction: column;
   z-index: 1001;
