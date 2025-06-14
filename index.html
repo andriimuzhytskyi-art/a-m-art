@@ -130,14 +130,17 @@ function loadGoogleAnalytics() {
     const overlay = document.getElementById('menuOverlay');
     const icon = document.querySelector('.menu-icon');
 
+    if (!panel || !overlay || !icon) return;
+
     // Получаем положение иконки
     const iconRect = icon.getBoundingClientRect();
-
     panel.style.top = `${iconRect.bottom + window.scrollY}px`;
     panel.style.left = `${iconRect.left + window.scrollX}px`;
 
-    panel.classList.toggle('show');
-    overlay.classList.toggle('show');
+    // Переключаем отображение
+    const isVisible = panel.style.display === 'flex';
+    panel.style.display = isVisible ? 'none' : 'flex';
+    overlay.style.display = isVisible ? 'none' : 'block';
   }
 
   // Закрытие меню при клике вне области
@@ -147,11 +150,12 @@ function loadGoogleAnalytics() {
     const icon = document.querySelector('.menu-icon');
 
     if (!panel.contains(e.target) && !icon.contains(e.target)) {
-      panel.classList.remove('show');
-      overlay.classList.remove('show');
+      panel.style.display = 'none';
+      overlay.style.display = 'none';
     }
   });
 </script>
+
 
 
 
