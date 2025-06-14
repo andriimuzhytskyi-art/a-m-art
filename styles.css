@@ -74,7 +74,7 @@ h1 i {
   left: 1em; /* Фиксируем у края контейнера */
   width: fit-content;
   background: rgba(255, 255, 255, 0.9);
-  padding: 0.8em 1em;
+  padding: 0.8em 0em;
   display: none;
   flex-direction: column;
   z-index: 1001;
