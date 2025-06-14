@@ -103,11 +103,6 @@ h1 i {
   transition: opacity 0.3s ease;
 }
 
-/* 🎬 Анимация появления */
-.menu-overlay.show {
-  opacity: 1;
-  display: block;
-}
 
 
 /* 📌 Ссылки в меню */
