@@ -61,8 +61,8 @@ h1 i {
 
 .menu-panel {
   position: absolute;
-  top: 4.2em; /* Теперь четко под иконкой */
-  left: 1em;
+  left: 1em; /* Ориентируемся на иконку */
+  top: 4.2em; /* Чётко под иконкой */
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 6px;
@@ -72,6 +72,14 @@ h1 i {
   flex-direction: column;
   z-index: 1001;
 }
+
+/* 📱 Адаптивность */
+@media (min-width: 600px) {
+  .menu-panel {
+    left: calc((100% - 800px) / 2);
+  }
+}
+
 
 .menu-overlay {
   position: fixed;
