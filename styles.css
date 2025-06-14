@@ -72,10 +72,6 @@ h1 i {
   position: absolute;
   top: calc(48px + 2.5em); /* Ориентируемся на отступы */
   left: 16px;
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 0.8em 1em;
   display: none;
   flex-direction: column;
