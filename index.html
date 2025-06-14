@@ -132,7 +132,22 @@ function loadGoogleAnalytics() {
 })();
 </script>
 
+// Меню
+<script>
+  function toggleMenu() {
+    const panel = document.getElementById('menuPanel');
+    panel.style.display = (panel.style.display === 'flex') ? 'none' : 'flex';
+  }
 
+  // Закрытие меню при клике вне области
+  document.addEventListener('click', function (e) {
+    const icon = document.querySelector('.menu-icon');
+    const panel = document.getElementById('menuPanel');
+    if (!icon.contains(e.target) && !panel.contains(e.target)) {
+      panel.style.display = 'none';
+    }
+  });
+</script>
 
 
   
