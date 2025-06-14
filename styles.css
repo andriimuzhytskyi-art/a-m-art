@@ -71,7 +71,7 @@ h1 i {
 .menu-panel {
   position: absolute;
   top: 5em; /* Чётко задаём позицию */
-  left: 1em;
+  left: 1em; /* Закрепляем у контейнера */
   width: fit-content;
   background: rgba(255, 255, 255, 0.9);
   padding: 0.8em 1em;
@@ -81,6 +81,13 @@ h1 i {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* 📱 Для больших экранов */
+@media (min-width: 900px) {
+  .menu-panel {
+    left: 1em; /* Не двигаем меню к центру */
+  }
 }
 
 /* 📌 Подложка */
