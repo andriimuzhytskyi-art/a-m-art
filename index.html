@@ -133,16 +133,16 @@ function loadGoogleAnalytics() {
 
     if (!panel || !overlay || !icon) return;
 
-    // Получаем положение иконки
+    // Позиционируем меню под иконкой
     const iconRect = icon.getBoundingClientRect();
-    panel.style.top = `${iconRect.bottom + window.scrollY}px`;
+    panel.style.top = `${iconRect.bottom + window.scrollY + 32}px`; /* 2em → 32px */
     panel.style.left = `${iconRect.left + window.scrollX}px`;
 
     panel.classList.toggle('show');
-    overlay.classList.toggle('show');
+    overlay.classList.toggle('show'); // Включаем подложку
   }
 
-  // Закрытие меню при клике вне области
+  // Закрытие при клике вне области
   document.addEventListener('click', function (e) {
     const panel = document.getElementById('menuPanel');
     const overlay = document.getElementById('menuOverlay');
