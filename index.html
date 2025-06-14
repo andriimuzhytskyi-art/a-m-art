@@ -132,7 +132,7 @@ function loadGoogleAnalytics() {
   }
 </script> -->
 
-<script>
+<!-- <script>
   function toggleMenu() {
     const panel = document.getElementById('menuPanel');
     const overlay = document.getElementById('menuOverlay');
@@ -154,9 +154,29 @@ function loadGoogleAnalytics() {
       overlay.classList.remove('show');
     }
   });
+</script> -->
+
+<script>
+  function toggleMenu() {
+    const panel = document.getElementById('menuPanel');
+    const overlay = document.getElementById('menuOverlay');
+    const icon = document.querySelector('.menu-icon i');
+
+    if (!panel || !overlay || !icon) return;
+
+    panel.classList.toggle('show');
+    overlay.classList.toggle('show');
+
+    // Меняем иконку "☰" на "✖"
+    if (panel.classList.contains('show')) {
+      icon.classList.remove('fa-bars');
+      icon.classList.add('fa-xmark');
+    } else {
+      icon.classList.remove('fa-xmark');
+      icon.classList.add('fa-bars');
+    }
+  }
 </script>
-
-
 
   </div>
 </body>
