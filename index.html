@@ -10,21 +10,19 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-  <header>
-    <!-- Menu-->
-  <div class="menu-icon">
+  
+  <!-- Menu -->
+  <div class="menu-icon" onclick="toggleMenu()">
     <i class="fa-solid fa-bars"></i>
   </div>
-  <div class="menu-icon" onclick="toggleMenu()">
-  <i class="fa-solid fa-bars"></i>
-</div>
 
-<div class="menu-panel" id="menuPanel">
-  <a href="#">Home</a>
-  <a href="#ask">Ask</a>
-  <a href="#gallery">Gallery</a>
-</div>
-    
+  <div class="menu-panel" id="menuPanel">
+    <a href="#">Home</a>
+    <a href="#ask">Ask</a>
+    <a href="#gallery">Gallery</a>
+  </div>
+
+  <header>
     <img src="profile.png" alt="Andrii Muzhytskyi Art" class="profile-photo">
     <h1>
       Andrii Muzhytskyi Art
@@ -69,17 +67,7 @@
   <a href="https://coinsend.to/@andriimuzhytskyi.art" class="bitcoin"><i class="fab fa-bitcoin"></i> CoinSend</a>
 </div>
 
-    <!-- Menu
-    <nav>
-      <a href="#blog">Blog</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#about">About</a>
-    </nav>
-    -->
   </header>
- <!-- Main <main>-->
-    <!-- Blog preview and gallery sections go here -->
-  <!-- </main>-->
  
   <footer>
     <p>2025 © Andrii Muzhytskyi Art · <a href="mailto:andriimuzhytskyi.art@gmail.com">Contact</a></p>
@@ -132,25 +120,25 @@ function loadGoogleAnalytics() {
   };
 })();
 </script>
-
-// Меню
+  
+<!-- Menu script -->
+  
 <script>
+  // Открытие/закрытие меню
   function toggleMenu() {
     const panel = document.getElementById('menuPanel');
     panel.style.display = (panel.style.display === 'flex') ? 'none' : 'flex';
   }
 
-  // Закрытие меню при клике вне области
+  // Закрытие при клике вне панели
   document.addEventListener('click', function (e) {
-    const icon = document.querySelector('.menu-icon');
     const panel = document.getElementById('menuPanel');
-    if (!icon.contains(e.target) && !panel.contains(e.target)) {
+    const icon = document.querySelector('.menu-icon');
+    if (!panel.contains(e.target) && !icon.contains(e.target)) {
       panel.style.display = 'none';
     }
   });
 </script>
 
-
-  
 </body>
 </html>
