@@ -94,19 +94,20 @@ h1 i {
 
 .menu-overlay {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 60vh; /* Покрывает 60% экрана */
-  background: rgba(0, 0, 0, 0.4);
+  height: 100vh; /* Покрывает весь экран */
+  background: rgba(0, 0, 0, 0.5); /* Полупрозрачный серый фон */
   display: none;
   z-index: 999;
   transition: opacity 0.3s ease;
 }
 
-/* 🎬 Плавное появление */
-.menu-panel.show {
+/* 🎬 Анимация появления */
+.menu-overlay.show {
   opacity: 1;
-  visibility: visible;
-  display: flex;
+  display: block;
 }
 
 
