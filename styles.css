@@ -54,8 +54,8 @@ h1 i {
 /* 📌 Иконка меню */
 .menu-icon {
   position: absolute;
-  top: 1.5em;
-  left: 1em;
+  padding-top: 3em;
+  padding-left: 1em;
   font-size: 1.6rem;
   color: #555;
   cursor: pointer;
@@ -70,13 +70,16 @@ h1 i {
 /* 📌 Панель меню */
 .menu-panel {
   position: absolute;
+  top: calc(48px + 2.5em); /* Ориентируемся на отступы */
+  left: 16px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 0.8em 1em;
   display: none;
   flex-direction: column;
   z-index: 1001;
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 /* 📌 Подложка */
@@ -91,6 +94,7 @@ h1 i {
   z-index: 999;
   transition: opacity 0.3s ease;
 }
+
 
 /* 🎬 Анимация появления */
 .menu-panel.show {
@@ -108,7 +112,7 @@ h1 i {
 .menu-panel a {
   display: block;
   text-decoration: none;
-  color: #444;
+  color: #555;
   padding: 0.6em 0;
   font-weight: 500;
   transition: color 0.3s;
