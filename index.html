@@ -128,19 +128,9 @@ function loadGoogleAnalytics() {
 <script>
   function toggleMenu() {
     const panel = document.getElementById('menuPanel');
-    const icon = document.querySelector('.menu-icon');
-
-    if (!panel || !icon) return;
-
-    // Получаем координаты иконки
-    const iconRect = icon.getBoundingClientRect();
-    panel.style.top = `${iconRect.bottom + window.scrollY + 32}px`; /* 2em → 32px */
-    panel.style.left = `${iconRect.left + window.scrollX}px`; /* Теперь фиксируем относительно иконки */
-
     panel.classList.toggle('show');
   }
 </script>
-
 
 
 
