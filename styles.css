@@ -6,13 +6,10 @@ body {
   color: #333;
   line-height: 1.6;
 }
-
 .container {
-  max-width: 900px;
+  width: 900px;
   margin: 0 auto;
   position: relative;
-  padding: 0 1em;
-  box-sizing: border-box;
 }
 
 p {
@@ -21,7 +18,7 @@ p {
 
 header {
   text-align: center;
-  padding: 3em 1em;
+  padding: 3em 0em;
 }
 
 header h1 {
@@ -46,18 +43,19 @@ h1 i {
   object-fit: cover;
   border: 4px solid white;
   margin-bottom: 0.3em;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .intro {
   margin-bottom: 1.5em;
 }
 
+/* Menu */
 /* 📌 Иконка меню */
 .menu-icon {
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
+  position: absolute;
+  top: 3rem; /* Отступ сверху */
+  left: 1rem; /* Отступ слева */
   font-size: 1.6rem;
   color: #555;
   cursor: pointer;
@@ -72,8 +70,9 @@ h1 i {
 /* 📌 Панель меню */
 .menu-panel {
   position: absolute;
-  top: 5em;
-  left: 1em;
+  top: 5em; 
+  left: 1em; 
+  width: fit-content;
   background: rgba(255, 255, 255, 0.9);
   padding-top: 0.8em;
   display: none;
@@ -82,28 +81,16 @@ h1 i {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
 }
 
-.menu-panel.show {
-  opacity: 1;
-  visibility: visible;
-  display: flex;
+/* 📱 Для больших экранов */
+@media (min-width: 900px) {
+  .menu-panel {
+    left: 1em; /* Не двигаем меню к центру */
+  }
 }
 
-.menu-panel a {
-  display: block;
-  text-decoration: none;
-  color: #555;
-  padding: 0.6em 1em;
-  font-weight: 500;
-  transition: color 0.3s;
-}
-
-.menu-panel a:hover {
-  color: #1792dd;
-}
+/* 📌 Подложка */
 
 .menu-overlay {
   position: fixed;
@@ -115,18 +102,56 @@ h1 i {
   transition: opacity 0.3s ease;
 }
 
+/* 🎬 Показываем меню и подложку */
+.menu-panel.show {
+  opacity: 1;
+  visibility: visible;
+  display: flex;
+}
+
+
+/* 📌 Ссылки в меню */
+.menu-panel a {
+  display: block;
+  text-decoration: none;
+  color: #555;
+  padding: 0.6em 0;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.menu-panel a:hover {
+  color: #1792dd;
+}
+
 .menu-overlay.show {
   opacity: 1;
   display: block;
 }
 
+/* 📱 Адаптивность */
+@media (min-width: 600px) {
+  .menu-panel {
+    left: calc((100% - 800px) / 2);
+  }
+}
+
+
+
+@media (min-width: 600px) {
+  .menu-icon {
+    left: calc((100% - 800px) / 2); 
+  }
+}
+
+
 main {
   max-width: 800px;
   margin: 2em auto;
   padding: 0 1em;
-  box-sizing: border-box;
 }
 
+/* 🔗 Навигация */
 nav a {
   margin: 0 1em;
   text-decoration: none;
@@ -139,15 +164,17 @@ nav a:hover {
   color: #007aff;
 }
 
+/* Афиша */
 .campaign-box {
   font-size: inherit;
+  max-width: 830px;
   width: 100%;
-  margin: 0 auto 1.5em;
+  margin: 0 auto;
   border: 2px solid #d8e8f2;
   background-color: #fcfcfc;
+  margin-bottom: 1.5em;
   padding: 1.5em;
   border-radius: 8px;
-  box-sizing: border-box;
 }
 
 .parent-container {
@@ -182,7 +209,27 @@ nav a:hover {
 
 .campaign-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+
+/* 🔗 Соцсети / Линки */
+.social-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  font-size: 1rem;
+  margin: 1.2em auto;
+  max-width: 800px;
+  padding: 0 1em;
+}
+
+.section-heading {
+  font-weight: bold;
+  color: #555;
+  margin-right: 1em;
 }
 
 .social-row {
@@ -192,7 +239,7 @@ nav a:hover {
   justify-content: center;
   gap: 20px;
   font-size: 1rem;
-  margin: 1.2em auto;
+  margin: 1.2em auto; /* Уменьшенный вертикальный отступ */
   max-width: 800px;
   padding: 0 1em;
 }
@@ -218,16 +265,13 @@ nav a:hover {
   transition: inherit;
 }
 
-.social-row a:hover {
-  transform: translateY(-2px);
-}
-
-/* Цвета hover для разных соцсетей */
+/* 🔄 Цвет текста и иконки при наведении */
 .social-row a.behance:hover   { color: #1769FF; }
 .social-row a.dribbble:hover  { color: #EA4C89; }
 .social-row a.saatchi:hover   { color: #CE2B37; }
 .social-row a.opensea:hover   { color: #2081E2; }
 .social-row a.rarible:hover   { color: #FEDA03; }
+
 .social-row a.youtube:hover   { color: #FF0000; }
 .social-row a.tiktok:hover    { color: #69C9D0; }
 .social-row a.instagram:hover { color: #E4405F; }
@@ -235,17 +279,31 @@ nav a:hover {
 .social-row a.threads:hover   { color: #000000; }
 .social-row a.viber:hover     { color: #7360F2; }
 .social-row a.whatsapp:hover  { color: #25D366; }
+
 .social-row a.patreon:hover   { color: #F96854; }
 .social-row a.paypal:hover    { color: #003087; }
 .social-row a.bitcoin:hover   { color: #FF9900; }
 
+.social-row a:hover {
+  transform: translateY(-2px);
+}
+
 @media (max-width: 600px) {
-  main {
-    padding: 0 1em;
+
+ main {
+    padding: 0;
   }
 
   .campaign-box {
-    padding: 1em;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+  
+  header {
+    padding: 2em 1em;
   }
 
   .social-row {
@@ -274,15 +332,18 @@ nav a:hover {
   .campaign-box {
     margin-bottom: 1.5rem;
   }
+
 }
 
+
+
+/* 🧾 Подвал */
 footer {
   text-align: center;
-  padding: 1em;
+  padding: 1em 1em;
   color: #777;
   font-size: 0.9em;
 }
-
 footer a {
   color: #444;
   transition: color 0.3s ease;
@@ -293,22 +354,15 @@ footer a:hover {
 }
 
 #cookie-banner {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  max-width: 320px;
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  padding: 16px;
+  position: fixed; bottom: 20px; right: 20px;
+  max-width: 320px; background: rgba(0,0,0,0.6);
+  color: #fff; padding: 16px;
   font-family: sans-serif;
   border-radius: 8px;
   backdrop-filter: blur(5px);
-  display: none;
-  z-index: 1000;
+  display: none; z-index: 1000;
 }
-
-#cookie-banner h3,
-#cookie-banner p {
+#cookie-banner h3 {
   color: #fff;
   margin: 0 0 12px 0;
   line-height: 1.4;
@@ -318,6 +372,11 @@ footer a:hover {
   margin-right: 8px;
 }
 
+#cookie-banner p {
+  color: #fff;
+  margin: 0 0 12px 0;
+  line-height: 1.4;
+}
 #cookie-banner .btn {
   margin-right: 8px;
   padding: 6px 14px;
@@ -329,12 +388,9 @@ footer a:hover {
   cursor: pointer;
   transition: background 0.3s;
 }
-
 #cookie-banner .btn:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255,255,255,0.2);
 }
-
 #cookie-banner .btn.reject {
-  border-color: #bbb;
-  color: #bbb;
+  border-color: #bbb; color: #bbb;
 }
