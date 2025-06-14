@@ -73,7 +73,6 @@ h1 i {
   top: 5em; /* Чёткий отступ от иконки */
   left: 1em; /* Фиксируем у края контейнера */
   width: fit-content;
-  background: rgba(255, 255, 255, 0.9);
   padding: 0.8em 0em;
   display: none;
   flex-direction: column;
