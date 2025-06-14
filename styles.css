@@ -54,8 +54,8 @@ h1 i {
 /* 📌 Иконка меню */
 .menu-icon {
   position: absolute;
-  padding-top: 3em;
-  padding-left: 1em;
+  top: 3em; /* Отступ сверху */
+  left: 1em; /* Отступ слева */
   font-size: 1.6rem;
   color: #555;
   cursor: pointer;
@@ -69,6 +69,13 @@ h1 i {
 
 /* 📌 Панель меню */
 .menu-panel {
+  position: absolute;
+  top: calc(3em + 2em); /* Появляется ровно под иконкой */
+  left: 1em; /* Отступ слева */
+  padding: 0.8em 1em;
+  display: none;
+  flex-direction: column;
+  z-index: 1001;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -78,18 +85,20 @@ h1 i {
 
 .menu-overlay {
   width: 100%;
-  height: 50vh; /* Половина экрана по вертикали */
+  height: 60vh; /* Теперь 60% экрана по вертикали */
+  background: rgba(255, 255, 255, 0.9);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  z-index: 999;
+  transition: opacity 0.3s ease;
 }
 
-/* 🎬 Анимация появления */
 .menu-panel.show {
   opacity: 1;
   visibility: visible;
-}
-
-.menu-overlay.show {
-  opacity: 1;
-  display: block;
+  display: flex;
 }
 
 /* 📌 Ссылки в меню */
