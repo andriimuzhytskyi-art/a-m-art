@@ -124,7 +124,7 @@ function loadGoogleAnalytics() {
   
 <!-- Menu script -->
 
-  <script>
+<script>
   function toggleMenu() {
     const panel = document.getElementById('menuPanel');
     const overlay = document.getElementById('menuOverlay');
@@ -132,7 +132,7 @@ function loadGoogleAnalytics() {
 
     if (!panel || !overlay || !icon) return;
 
-    // Получаем координаты иконки
+    // Получаем положение иконки
     const iconRect = icon.getBoundingClientRect();
     panel.style.top = `${iconRect.bottom + window.scrollY}px`;
     panel.style.left = `${iconRect.left + window.scrollX}px`;
@@ -141,7 +141,7 @@ function loadGoogleAnalytics() {
     overlay.classList.toggle('show');
   }
 
-  // Закрытие при клике вне области
+  // Закрытие меню при клике вне области
   document.addEventListener('click', function (e) {
     const panel = document.getElementById('menuPanel');
     const overlay = document.getElementById('menuOverlay');
