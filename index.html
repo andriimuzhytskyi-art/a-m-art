@@ -125,21 +125,29 @@ function loadGoogleAnalytics() {
 <!-- Menu script -->
   
 <script>
-  // Открытие/закрытие меню
   function toggleMenu() {
     const panel = document.getElementById('menuPanel');
-    panel.style.display = (panel.style.display === 'flex') ? 'none' : 'flex';
+    const overlay = document.getElementById('menuOverlay');
+    
+    const isVisible = panel.style.display === 'flex';
+
+    panel.style.display = isVisible ? 'none' : 'flex';
+    overlay.style.display = isVisible ? 'none' : 'block';
   }
 
-  // Закрытие при клике вне панели
+  // Закрытие меню при клике вне области
   document.addEventListener('click', function (e) {
     const panel = document.getElementById('menuPanel');
+    const overlay = document.getElementById('menuOverlay');
     const icon = document.querySelector('.menu-icon');
+
     if (!panel.contains(e.target) && !icon.contains(e.target)) {
       panel.style.display = 'none';
+      overlay.style.display = 'none';
     }
   });
 </script>
+
 
 </body>
 </html>
