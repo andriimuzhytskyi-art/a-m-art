@@ -45,6 +45,7 @@ h1 i {
 }
 
 /* Menu */
+/* 📌 Иконка меню */
 .menu-icon {
   position: absolute;
   top: 1.5em;
@@ -55,14 +56,14 @@ h1 i {
   z-index: 1001;
   transition: color 0.3s ease;
 }
+
 .menu-icon:hover {
   color: #1792dd;
 }
 
+/* 📌 Панель меню */
 .menu-panel {
   position: absolute;
-  left: 1em; /* Ориентируемся на иконку */
-  top: 4.2em; /* Чётко под иконкой */
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 6px;
@@ -71,31 +72,37 @@ h1 i {
   display: none;
   flex-direction: column;
   z-index: 1001;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* 📱 Адаптивность */
-@media (min-width: 600px) {
-  .menu-panel {
-    left: calc((100% - 800px) / 2);
-  }
-}
-
+/* 📌 Подложка */
 .menu-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 50vh; /* Подложка занимает половину экрана ВЕРТИКАЛЬНО */
+  height: 50vh; /* Занимает половину экрана по вертикали */
   background: rgba(0, 0, 0, 0.4);
   display: none;
-  z-index: 1000;
+  z-index: 999;
+  transition: opacity 0.3s ease;
 }
 
-/* Анимация появления */
-.menu-panel, .menu-overlay {
-  transition: opacity 0.3s ease, transform 0.3s ease;
+/* 🎬 Анимация появления */
+.menu-panel.show {
+  opacity: 1;
+  transform: translateY(0);
+  display: flex;
 }
 
+.menu-overlay.show {
+  opacity: 1;
+  display: block;
+}
+
+/* 📌 Ссылки в меню */
 .menu-panel a {
   display: block;
   text-decoration: none;
@@ -107,6 +114,13 @@ h1 i {
 
 .menu-panel a:hover {
   color: #1792dd;
+}
+
+/* 📱 Адаптивность */
+@media (min-width: 600px) {
+  .menu-panel {
+    left: calc((100% - 800px) / 2);
+  }
 }
 
 
