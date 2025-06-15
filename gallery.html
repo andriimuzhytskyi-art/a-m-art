@@ -35,44 +35,43 @@
 <h3>Explore My Gallery</h3>
 <p>Browse through selected artworks — each piece tells a story beyond the visible.</p>
 
- <section id="gallery">
+
+
+<div class="gallery-container">
+  <!-- Фильтры -->
   <div class="gallery-filters">
     <button class="filter-btn active" data-filter="all">All</button>
     <button class="filter-btn" data-filter="oil">Oil</button>
     <button class="filter-btn" data-filter="digital">Digital</button>
   </div>
 
-  <div class="two-column-grid">
+  <!-- Галерея 2 колонки -->
+  <div class="gallery-grid">
     <!-- Работа 1 -->
     <div class="artwork" data-category="oil">
-      <div class="artwork-image-container">
-        <img src="gallery/SketchOnCardboard_1.jpeg" alt="Solar Emotion" class="artwork-image" loading="lazy">
-        <div class="artwork-hover-details">
-          <p>View details</p>
-        </div>
+      <div class="image-wrapper">
+        <img src="gallery/SketchOnCardboard_1.jpeg" alt="Artwork" class="artwork-thumbnail">
       </div>
-      <div class="artwork-info">
+      <div class="artwork-details">
         <h3>Solar Emotion #1</h3>
-        <p class="artwork-meta">2023, Oil on canvas · 60×80cm</p>
+        <p>Oil on canvas · 60×80cm · 2023</p>
       </div>
     </div>
-
+    
     <!-- Работа 2 -->
     <div class="artwork" data-category="digital">
-      <div class="artwork-image-container">
-        <img src="gallery/SketchOnCardboard_1.jpeg" alt="Digital Dreams" class="artwork-image" loading="lazy">
-        <div class="artwork-hover-details">
-          <p>View details</p>
-        </div>
+      <div class="image-wrapper">
+        <img src="gallery/SketchOnCardboard_1.jpeg" alt="Artwork" class="artwork-thumbnail">
       </div>
-      <div class="artwork-info">
+      <div class="artwork-details">
         <h3>Digital Dreams</h3>
-        <p class="artwork-meta">2024, Digital · Edition of 50</p>
+        <p>Digital art · Edition of 50 · 2024</p>
       </div>
     </div>
   </div>
-</section>
+</div>
 
+    
 <div class="social-row">
   <span class="section-heading">My Work ➠</span>
   <a href="https://www.behance.net/andriimuzhytskyi_art" class="behance"><i class="fab fa-behance"></i> Behance</a>
@@ -119,17 +118,19 @@
  
 <script>
 document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
+  btn.addEventListener('click', function() {
     // Обновляем активную кнопку
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
+    this.classList.add('active');
     
     // Фильтруем работы
-    const filter = btn.dataset.filter;
+    const filter = this.dataset.filter;
     document.querySelectorAll('.artwork').forEach(artwork => {
-      artwork.style.display = (filter === 'all' || artwork.dataset.category === filter) 
-        ? 'block' 
-        : 'none';
+      if (filter === 'all' || artwork.dataset.category === filter) {
+        artwork.style.display = 'block';
+      } else {
+        artwork.style.display = 'none';
+      }
     });
   });
 });
