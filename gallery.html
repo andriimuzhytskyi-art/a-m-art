@@ -115,7 +115,24 @@
 </div>
 
  
-
+<script>
+  // Фильтрация работ
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    // Обновляем активную кнопку
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    
+    // Фильтруем работы
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.artwork').forEach(artwork => {
+      artwork.style.display = (filter === 'all' || artwork.dataset.category === filter) 
+        ? 'block' 
+        : 'none';
+    });
+  });
+});
+</script>
 
   <script>
   // Установка текущего года в футере
