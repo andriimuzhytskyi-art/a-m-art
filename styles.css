@@ -688,3 +688,13 @@
   height: auto;
   object-fit: cover;
 }
+.artwork-details:empty {
+  display: none;
+}
+.artwork-card,
+.artwork-details {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  min-height: 0;
+}
