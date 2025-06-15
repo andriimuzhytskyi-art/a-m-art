@@ -203,23 +203,28 @@
       margin: 0 0 8px;
     }
 
-    .campaign-button {
-      font-size: 1rem;
-      display: inline-block;
-      padding: 6px 12px;
-      margin-top: 1rem;
-      background-color: #1792dd;
-      border: none;
-      color: white;
-      text-decoration: none;
-      border-radius: 4px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
+    .campaign-button,
+button.campaign-button {
+  font-size: 1rem;
+  display: inline-block;
+  padding: 12px 24px; /* Увеличили padding для большей кнопки */
+  background-color: #1792dd;
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 6px; /* Немного больше радиус */
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  cursor: pointer;
+  text-align: center;
+  width: auto; /* Убираем width: 100% */
+  margin-top: 1rem;
+}
 
-    .campaign-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
+  .campaign-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  background-color: #1481c3;
+}
 
     /*  Соцсети / Линки */
     .social-row {
