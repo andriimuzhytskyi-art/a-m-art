@@ -204,6 +204,7 @@
     }
 
     .campaign-button {
+      font-size: 1rem;
       display: inline-block;
       padding: 6px 12px;
       background-color: #1792dd;
