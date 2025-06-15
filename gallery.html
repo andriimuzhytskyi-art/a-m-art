@@ -36,40 +36,29 @@
 <p>Browse through selected artworks — each piece tells a story beyond the visible.</p>
 
 
-
 <div class="gallery-container">
-  <!-- Фильтры -->
   <div class="gallery-filters">
     <button class="filter-btn active" data-filter="all">All</button>
     <button class="filter-btn" data-filter="oil">Oil</button>
     <button class="filter-btn" data-filter="digital">Digital</button>
   </div>
 
-  <!-- Галерея 2 колонки -->
   <div class="gallery-grid">
-    <!-- Работа 1 -->
     <div class="artwork" data-category="oil">
-      <div class="image-wrapper">
-        <img src="gallery/SketchOnCardboard_1.jpeg" alt="Artwork" class="artwork-thumbnail">
-      </div>
-      <div class="artwork-details">
-        <h3>Solar Emotion #1</h3>
-        <p>Oil on canvas · 60×80cm · 2023</p>
-      </div>
-    </div>
-    
-    <!-- Работа 2 -->
-    <div class="artwork" data-category="digital">
-      <div class="image-wrapper">
-        <img src="gallery/SketchOnCardboard_1.jpeg" alt="Artwork" class="artwork-thumbnail">
-      </div>
-      <div class="artwork-details">
-        <h3>Digital Dreams</h3>
-        <p>Digital art · Edition of 50 · 2024</p>
+      <div class="artwork-card">
+        <div class="image-container">
+          <img src="gallery/SketchOnCardboard_1.jpeg" alt="Artwork" loading="lazy">
+        </div>
+        <div class="artwork-info">
+          <h3>Solar Emotion #1</h3>
+          <p>Oil on canvas · 60×80cm · 2023</p>
+        </div>
       </div>
     </div>
+    <!-- Добавьте остальные работы аналогично -->
   </div>
 </div>
+
 
     
 <div class="social-row">
@@ -115,28 +104,25 @@
   <button class="btn reject" onclick="setCookieConsent('rejected')">Reject</button>
 </div>
 
- 
-<script>
+
+  <script>
+// Gallery
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', function() {
-    // Обновляем активную кнопку
+    // Update active button
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     this.classList.add('active');
     
-    // Фильтруем работы
+    // Filter artworks
     const filter = this.dataset.filter;
     document.querySelectorAll('.artwork').forEach(artwork => {
-      if (filter === 'all' || artwork.dataset.category === filter) {
-        artwork.style.display = 'block';
-      } else {
-        artwork.style.display = 'none';
-      }
+      artwork.style.display = (filter === 'all' || artwork.dataset.category === filter) 
+        ? 'block' 
+        : 'none';
     });
   });
 });
-</script>
-
-  <script>
+    
   // Установка текущего года в футере
   document.getElementById('current-year').textContent = new Date().getFullYear();
 
