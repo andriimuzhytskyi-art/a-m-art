@@ -515,4 +515,10 @@ button.campaign-button {
       padding: 10px;
     }
   }
- 
+ @media (max-width: 768px) {
+  .campaign-button,
+  button.campaign-button {
+    padding: 10px 20px;
+    width: 100%; /* На мобильных делаем на всю ширину */
+  }
+}
