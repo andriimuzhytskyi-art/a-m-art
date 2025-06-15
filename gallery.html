@@ -35,37 +35,39 @@
 <h3>Explore My Gallery</h3>
 <p>Browse through selected artworks — each piece tells a story beyond the visible.</p>
 
-    <section id="gallery">
-  <!-- Фильтры -->
+ <section id="gallery">
   <div class="gallery-filters">
-    <button class="filter-btn active" data-filter="all">All Works</button>
-    <button class="filter-btn" data-filter="oil">Oil Paintings</button>
-    <button class="filter-btn" data-filter="digital">Digital Art</button>
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="oil">Oil</button>
+    <button class="filter-btn" data-filter="digital">Digital</button>
   </div>
 
-  <!-- Галерея -->
-  <div class="masonry-grid">
-    <!-- Пример работы маслом -->
+  <div class="two-column-grid">
+    <!-- Работа 1 -->
     <div class="artwork" data-category="oil">
       <div class="artwork-image-container">
-        <img src="gallery/SketchOnCardboard_1.jpeg" alt="Sprouts in a White Pitcher" class="artwork-image" loading="lazy">
+        <img src="oil-1.jpg" alt="Solar Emotion" class="artwork-image" loading="lazy">
+        <div class="artwork-hover-details">
+          <p>View details</p>
+        </div>
       </div>
       <div class="artwork-info">
-        <h3>Sprouts in a White Pitcher</h3>
-        <p class="artwork-description">Sketch on cardboard, oil, 2024</p>
-        <p class="artwork-dimensions">18×28 cm</p>
+        <h3>Solar Emotion #1</h3>
+        <p class="artwork-meta">2023, Oil on canvas · 60×80cm</p>
       </div>
     </div>
 
-    <!-- Пример цифрового арта -->
+    <!-- Работа 2 -->
     <div class="artwork" data-category="digital">
       <div class="artwork-image-container">
         <img src="digital-1.jpg" alt="Digital Dreams" class="artwork-image" loading="lazy">
+        <div class="artwork-hover-details">
+          <p>View details</p>
+        </div>
       </div>
       <div class="artwork-info">
         <h3>Digital Dreams</h3>
-        <p class="artwork-description">Digital painting, limited edition</p>
-        <p class="artwork-dimensions">4000×5000 px</p>
+        <p class="artwork-meta">2024, Digital · Edition of 50</p>
       </div>
     </div>
   </div>
@@ -116,7 +118,6 @@
 
  
 <script>
-  // Фильтрация работ
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     // Обновляем активную кнопку
