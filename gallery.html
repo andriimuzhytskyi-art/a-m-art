@@ -208,6 +208,14 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
       toggleMenu();
     }
   });
+
+    document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.artwork').forEach(item => {
+    if (!item.querySelector('img') || item.querySelector('img').src.includes('undefined')) {
+      item.style.display = 'none';
+    }
+  });
+});
 </script>
 
   </div>
