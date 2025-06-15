@@ -535,94 +535,79 @@
 
    
 /* Gallery Container */
+
 .gallery-container {
   max-width: 900px;
   margin: 0 auto;
-  padding: 20px 10px;
+  padding: 20px;
 }
 
-/* Grid Layout */
+/* Сетка для десктопов (2 колонки) */
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* Ключевое изменение */
+  gap: 25px;
 }
 
-/* Artwork Card */
-.artwork-card {
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-}
-
-.artwork-card:hover {
-  transform: translateY(-5px);
-}
-
-/* Image Container */
+/* Контейнер для изображения - теперь универсальный */
 .image-container {
+  position: relative;
   width: 100%;
-  height: 250px;
+  padding-bottom: 125%; /* Соотношение 4:5 */
   overflow: hidden;
+  border-radius: 4px;
+  background: #f5f5f5;
 }
 
 .image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
 }
 
-.artwork-card:hover .image-container img {
+/* Эффекты при наведении */
+.artwork:hover .image-container img {
   transform: scale(1.05);
 }
 
-/* Artwork Info */
+/* Информация о работе */
 .artwork-info {
-  padding: 15px;
+  padding: 15px 5px;
 }
 
 .artwork-info h3 {
-  margin: 0 0 5px 0;
   font-size: 16px;
-  color: #333;
+  margin: 0 0 5px 0;
 }
 
 .artwork-info p {
-  margin: 0;
   font-size: 13px;
   color: #666;
+  margin: 0;
 }
 
-/* Filters */
+/* Фильтры */
 .gallery-filters {
   display: flex;
-  justify-content: center;
   gap: 10px;
   margin-bottom: 25px;
+  justify-content: center;
 }
 
-.filter-btn {
-  padding: 8px 16px;
-  background: none;
-  border: 1px solid #ddd;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.filter-btn.active {
-  background: #000;
-  color: white;
-  border-color: #000;
-}
-
-/* Responsive */
+/* Адаптивность */
 @media (max-width: 768px) {
   .gallery-grid {
     grid-template-columns: 1fr;
   }
+  
+  .image-container {
+    padding-bottom: 150%; /* Чуть более вытянутые изображения на мобильных */
+  }
+}
   
   .image-container {
     height: 300px;
