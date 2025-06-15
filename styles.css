@@ -698,3 +698,6 @@
   height: auto;
   min-height: 0;
 }
+.artwork:empty {
+  display: none !important;
+}
