@@ -92,9 +92,9 @@
 
   </header>
  
-  <footer>
-    <p>2025 © Andrii Muzhytskyi Art · <a href="mailto:andriimuzhytskyi.art@gmail.com">Contact</a></p>
-  </footer>
+<footer>
+  <p><span id="current-year"></span> © Andrii Muzhytskyi Art</p>
+</footer>
 
 <!-- Cookie and Banner -->
   
@@ -106,43 +106,6 @@
   <button class="btn reject" onclick="setCookieConsent('rejected')">Reject</button>
 </div>
 
-<script>
-// Google Analytics: заранее инициализируем dataLayer
-window.dataLayer = window.dataLayer || [];
-function gtag(){ dataLayer.push(arguments); }
-
-function loadGoogleAnalytics() {
-  const gaScript = document.createElement('script');
-  gaScript.setAttribute('async', '');
-  gaScript.src = "https://www.googletagmanager.com/gtag/js?id=G-2TP6MJ447Y";
-  document.head.appendChild(gaScript);
-
-  gtag('js', new Date());
-  gtag('config', 'G-2TP6MJ447Y');
-}
-
-// Согласие и баннер
-(function () {
-  const banner = document.getElementById('cookie-banner');
-  const consent = localStorage.getItem('cookieConsent');
-
-  if (!consent) {
-    banner.style.display = 'block';
-  } else if (consent === 'accepted') {
-    loadGoogleAnalytics();
-  }
-
-  window.setCookieConsent = function(value) {
-    localStorage.setItem('cookieConsent', value);
-    banner.style.display = 'none';
-    console.log("Cookie preference:", value);
-
-    if (value === 'accepted') {
-      loadGoogleAnalytics();
-    }
-  };
-})();
-</script>
  
 <!-- email - captcha-->
 
@@ -211,28 +174,81 @@ function loadGoogleAnalytics() {
     });
   </script>
 
-    
-<!-- Icons menu -->>
-<script>
+  <script>
+  // Установка текущего года в футере
+  document.getElementById('current-year').textContent = new Date().getFullYear();
+
+  // Google Analytics
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+
+  function loadGoogleAnalytics() {
+    try {
+      const gaScript = document.createElement('script');
+      gaScript.setAttribute('async', '');
+      gaScript.src = "https://www.googletagmanager.com/gtag/js?id=G-2TP6MJ447Y";
+      document.head.appendChild(gaScript);
+
+      gtag('js', new Date());
+      gtag('config', 'G-2TP6MJ447Y');
+    } catch (e) {
+      console.error('Error loading Google Analytics:', e);
+    }
+  }
+
+  // Cookie Consent
+  (function() {
+    const banner = document.getElementById('cookie-banner');
+    const consent = localStorage.getItem('cookieConsent');
+
+    if (!consent) {
+      banner.style.display = 'block';
+    } else if (consent === 'accepted') {
+      loadGoogleAnalytics();
+    }
+
+    window.setCookieConsent = function(value) {
+      localStorage.setItem('cookieConsent', value);
+      banner.style.display = 'none';
+      
+      if (value === 'accepted') {
+        loadGoogleAnalytics();
+      }
+    };
+  })();
+
+  // Menu Toggle
   function toggleMenu() {
     const panel = document.getElementById('menuPanel');
     const overlay = document.getElementById('menuOverlay');
     const icon = document.querySelector('.menu-icon i');
 
-    if (!panel || !overlay || !icon) return;
-
     panel.classList.toggle('show');
     overlay.classList.toggle('show');
-
-    // Меняем иконку "☰" на "✖"
+    
+    // Меняем иконку
     if (panel.classList.contains('show')) {
-      icon.classList.remove('fa-bars');
-      icon.classList.add('fa-xmark');
+      icon.classList.replace('fa-bars', 'fa-xmark');
     } else {
-      icon.classList.remove('fa-xmark');
-      icon.classList.add('fa-bars');
+      icon.classList.replace('fa-xmark', 'fa-bars');
     }
   }
+
+  // Закрытие меню по клику вне области или по Escape
+  document.addEventListener('click', function(e) {
+    const panel = document.getElementById('menuPanel');
+    const icon = document.querySelector('.menu-icon');
+    
+    if (!panel.contains(e.target) && !icon.contains(e.target) && panel.classList.contains('show')) {
+      toggleMenu();
+    }
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && document.getElementById('menuPanel').classList.contains('show')) {
+      toggleMenu();
+    }
+  });
 </script>
 
   </div>
