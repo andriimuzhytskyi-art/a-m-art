@@ -699,5 +699,8 @@
   min-height: 0;
 }
 .artwork:empty {
-  display: none !important;
+  display: none;
+}
+.artwork-card:not(:has(img[src])) {
+  display: none;
 }
