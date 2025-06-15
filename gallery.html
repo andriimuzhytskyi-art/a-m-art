@@ -32,10 +32,44 @@
     </h1>
     <p class="intro">Oil and digital painter. Art's my passion & drives me.</p>
 
-<h3>Ask Me a Question</h3>
-<p>Have a question or thought? Send it here — I’ll read every message and do my best to reply.</p>
+<h3>Explore My Gallery</h3>
+<p>Browse through selected artworks — each piece tells a story beyond the visible.</p>
 
-    
+    <section id="gallery">
+  <!-- Фильтры -->
+  <div class="gallery-filters">
+    <button class="filter-btn active" data-filter="all">All Works</button>
+    <button class="filter-btn" data-filter="oil">Oil Paintings</button>
+    <button class="filter-btn" data-filter="digital">Digital Art</button>
+  </div>
+
+  <!-- Галерея -->
+  <div class="masonry-grid">
+    <!-- Пример работы маслом -->
+    <div class="artwork" data-category="oil">
+      <div class="artwork-image-container">
+        <img src="oil-1.jpg" alt="Solar Emotion #1" class="artwork-image" loading="lazy">
+      </div>
+      <div class="artwork-info">
+        <h3>Solar Emotion #1</h3>
+        <p class="artwork-description">Expressive oil painting on canvas, 2023</p>
+        <p class="artwork-dimensions">60×80 cm</p>
+      </div>
+    </div>
+
+    <!-- Пример цифрового арта -->
+    <div class="artwork" data-category="digital">
+      <div class="artwork-image-container">
+        <img src="digital-1.jpg" alt="Digital Dreams" class="artwork-image" loading="lazy">
+      </div>
+      <div class="artwork-info">
+        <h3>Digital Dreams</h3>
+        <p class="artwork-description">Digital painting, limited edition</p>
+        <p class="artwork-dimensions">4000×5000 px</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <div class="social-row">
   <span class="section-heading">My Work ➠</span>
