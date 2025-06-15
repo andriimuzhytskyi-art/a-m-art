@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow">
+  <title>Andrii Muzhytskyi Art</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+  
+  <!-- Menu -->
+  <div class="menu-icon" onclick="toggleMenu()">
+  <i class="fa-solid fa-bars"></i>
+</div>
+
+<div class="menu-overlay" id="menuOverlay"></div> <!-- Подложка -->
+<div class="menu-panel" id="menuPanel">
+  <a href="https://andriimuzhytskyi.art/a-m-art/index.html">Home</a>
+  <a href="https://andriimuzhytskyi.art/a-m-art/ask.html">Ask</a>
+  <a href="https://andriimuzhytskyi.art/a-m-art/gallery.html">Gallery</a>
+</div>
+
+  <header>
+    <img src="profile.png" alt="Andrii Muzhytskyi Art" class="profile-photo">
+    <h1>
+      Andrii Muzhytskyi Art
+      <i class="fa-solid fa-circle-check" style="color:#1da1f2;" aria-hidden="true" title="Verified artist"></i>
+    </h1>
+    <p class="intro">Oil and digital painter. Art's my passion & drives me.</p>
+
+<h3>Ask Me a Question</h3>
+<p>Have a question or thought? Send it here — I’ll read every message and do my best to reply.</p>
+
+    
+
+<div class="social-row">
+  <span class="section-heading">My Work ➠</span>
+  <a href="https://www.behance.net/andriimuzhytskyi_art" class="behance"><i class="fab fa-behance"></i> Behance</a>
+  <a href="https://dribbble.com/andriimuzhytskyi_art" class="dribbble"><i class="fab fa-dribbble"></i> Dribbble</a>
+  <a href="https://www.saatchiart.com/andriimuzhytskyi" class="saatchi"><i class="fas fa-palette"></i> Saatchi Art</a>
+  <a href="https://opensea.io/andriimuzhytskyi_art" class="opensea"><i class="fa-regular fa-image"></i> OpenSea</a>
+  <a href="https://rarible.com/andriimuzhytskyi_art" class="rarible"><i class="fa-regular fa-image"></i> Rarible</a>
+</div>
+
+<div class="social-row">
+  <span class="section-heading">Socials ➠</span>
+  <a href="https://www.youtube.com/channel/UCO5Juwk5NtFqss3I5OoQfqg" class="youtube"><i class="fab fa-youtube"></i> YouTube</a>
+  <a href="https://tiktok.com/@andriimuzhytskyi.art" class="tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
+  <a href="https://instagram.com/andriimuzhytskyi.art/" class="instagram"><i class="fab fa-instagram"></i> Instagram</a>
+  <a href="https://facebook.com/profile.php?id=61571020064886" class="facebook"><i class="fab fa-facebook"></i> Facebook</a>
+  <a href="https://www.threads.com/@andriimuzhytskyi.art" class="threads"><i class="fab fa-threads"></i> Threads</a>
+  <a href="https://invite.viber.com/..." class="viber"><i class="fab fa-viber"></i> Viber</a>
+  <a href="https://chat.whatsapp.com/..." class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+</div>
+
+<div class="social-row">
+  <span class="section-heading">Donations ➠</span>
+  <a href="https://www.patreon.com/andriimuzhytskyi_art" class="patreon"><i class="fab fa-patreon"></i> Patreon</a>
+  <a href="http://paypal.me/AndriiMuzhytskyi" class="paypal"><i class="fab fa-paypal"></i> PayPal</a>
+  <a href="https://coinsend.to/@andriimuzhytskyi.art" class="bitcoin"><i class="fab fa-bitcoin"></i> CoinSend</a>
+</div>
+
+  </header>
+ 
+<footer>
+  <p><span id="current-year"></span> © Andrii Muzhytskyi Art</p>
+</footer>
+
+<!-- Cookie and Banner -->
+  
+<!-- Cookie Banner и GA4 с согласия -->
+<div id="cookie-banner">
+  <h3><i class="fa-solid fa-cookie-bite"></i>Cookies & Analytics</h3>
+  <p>We use cookies to enhance your experience. Accept essential and analytics cookies. Some data may be transferred to third countries (e.g. the USA).</p>
+  <button class="btn" onclick="setCookieConsent('accepted')">Accept</button>
+  <button class="btn reject" onclick="setCookieConsent('rejected')">Reject</button>
+</div>
+
+ 
+
+
+  <script>
+  // Установка текущего года в футере
+  document.getElementById('current-year').textContent = new Date().getFullYear();
+
+  // Google Analytics
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+
+  function loadGoogleAnalytics() {
+    try {
+      const gaScript = document.createElement('script');
+      gaScript.setAttribute('async', '');
+      gaScript.src = "https://www.googletagmanager.com/gtag/js?id=G-2TP6MJ447Y";
+      document.head.appendChild(gaScript);
+
+      gtag('js', new Date());
+      gtag('config', 'G-2TP6MJ447Y');
+    } catch (e) {
+      console.error('Error loading Google Analytics:', e);
+    }
+  }
+
+  // Cookie Consent
+  (function() {
+    const banner = document.getElementById('cookie-banner');
+    const consent = localStorage.getItem('cookieConsent');
+
+    if (!consent) {
+      banner.style.display = 'block';
+    } else if (consent === 'accepted') {
+      loadGoogleAnalytics();
+    }
+
+    window.setCookieConsent = function(value) {
+      localStorage.setItem('cookieConsent', value);
+      banner.style.display = 'none';
+      
+      if (value === 'accepted') {
+        loadGoogleAnalytics();
+      }
+    };
+  })();
+
+  // Menu Toggle
+  function toggleMenu() {
+    const panel = document.getElementById('menuPanel');
+    const overlay = document.getElementById('menuOverlay');
+    const icon = document.querySelector('.menu-icon i');
+
+    panel.classList.toggle('show');
+    overlay.classList.toggle('show');
+    
+    // Меняем иконку
+    if (panel.classList.contains('show')) {
+      icon.classList.replace('fa-bars', 'fa-xmark');
+    } else {
+      icon.classList.replace('fa-xmark', 'fa-bars');
+    }
+  }
+
+  // Закрытие меню по клику вне области или по Escape
+  document.addEventListener('click', function(e) {
+    const panel = document.getElementById('menuPanel');
+    const icon = document.querySelector('.menu-icon');
+    
+    if (!panel.contains(e.target) && !icon.contains(e.target) && panel.classList.contains('show')) {
+      toggleMenu();
+    }
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && document.getElementById('menuPanel').classList.contains('show')) {
+      toggleMenu();
+    }
+  });
+</script>
+
+  </div>
+</body>
+</html>
