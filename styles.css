@@ -417,3 +417,46 @@ footer a:hover {
     bottom: 10px;
   }
 }
+
+/* Улучшенный эффект лупы с плавным увеличением */
+.image-container {
+  position: relative;
+  overflow: hidden;
+  cursor: zoom-in;
+}
+
+.image-container img {
+  transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+  transform-origin: center center;
+  will-change: transform; /* Оптимизация анимации */
+}
+
+.image-container:hover img {
+  transform: scale(1.8); /* Более сильное увеличение */
+}
+
+/* Затемнение фона при увеличении */
+.image-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.image-container:hover::after {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .image-container:hover img {
+    transform: none;
+  }
+  .image-container {
+    cursor: default;
+  }
+}
