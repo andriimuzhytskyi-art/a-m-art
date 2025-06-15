@@ -34,34 +34,39 @@
 
 <h1>Задать вопрос</h1>
   
-  <form id="askForm">
-    <div class="form-group">
-      <label for="name">Ваше имя *</label>
-      <input type="text" id="name" name="name" required>
+<form id="askForm">
+  <div class="form-group">
+    <label for="name">Ваше имя *</label>
+    <input type="text" id="name" name="name" required maxlength="50">
+  </div>
+  
+  <div class="form-group">
+    <label for="email">Email *</label>
+    <input type="email" id="email" name="email" required>
+  </div>
+  
+  <div class="form-group">
+    <label for="phone">Телефон</label>
+    <input type="tel" id="phone" name="phone" pattern="[\+]\d{1,3}\d{7,14}" placeholder="+380123456789">
+  </div>
+  
+  <div class="form-group">
+    <label for="message">Ваш вопрос * <span id="charCounter">(0/500)</span></label>
+    <textarea id="message" name="message" rows="5" required maxlength="500"></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label>Проверочный код *</label>
+    <div class="captcha-container">
+      <span class="captcha-code" id="captcha"></span>
+      <button type="button" id="captchaRefresh" title="Обновить код">↻</button>
+      <input type="text" id="captchaInput" placeholder="Введите код" required>
     </div>
-    
-    <div class="form-group">
-      <label for="email">Email *</label>
-      <input type="email" id="email" name="email" required>
-    </div>
-    
-    <div class="form-group">
-      <label for="message">Ваш вопрос *</label>
-      <textarea id="message" name="message" rows="5" required></textarea>
-    </div>
-    
-    <div class="form-group">
-      <label>Проверочный код *</label>
-      <div class="captcha-container">
-        <span class="captcha-code" id="captcha"></span>
-        <button type="button" id="captchaRefresh" title="Обновить код">↻</button>
-        <input type="text" id="captchaInput" placeholder="Введите код" required>
-      </div>
-      <div id="captchaError" class="error"></div>
-    </div>
-    
-    <button type="submit">Отправить вопрос</button>
-  </form>
+    <div id="captchaError" class="error"></div>
+  </div>
+  
+  <button type="submit">Отправить вопрос</button>
+</form>
 
 <div class="social-row">
   <span class="section-heading">My Work ➠</span>
@@ -109,70 +114,90 @@
  
 <!-- email - captcha-->
 
- <!-- EmailJS SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-  
-  <script>
-    // 1. Инициализация EmailJS (замените на ваш public key)
-    emailjs.init('ваш-public-key');
-    
-    // 2. Генерация капчи
-    function generateCaptcha() {
-      const chars = "0123456789ABCDEFGHJKLMNPQRSTUVWXYZ";
-      let captcha = "";
-      for(let i = 0; i < 6; i++) {
-        captcha += chars.charAt(Math.floor(Math.random() * chars.length));
-      }
-      document.getElementById('captcha').textContent = captcha;
-      return captcha;
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+  // Инициализация EmailJS (замените YOUR_USER_ID на ваш реальный ID)
+  emailjs.init('YOUR_USER_ID');
+
+  // Генерация сложной капчи
+  function generateCaptcha() {
+    const chars = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789!@#$%^&*";
+    let result = '';
+    for (let i = 0; i < 6; i++) {
+      result += chars.charAt(Math.floor(Math.random() * chars.length));
     }
+    return result;
+  }
+
+  // Обновление счетчика символов
+  function updateCharCounter() {
+    const textarea = document.getElementById('message');
+    const counter = document.getElementById('charCounter');
+    const remaining = 500 - textarea.value.length;
+    counter.textContent = `(${textarea.value.length}/500)`;
     
-    let currentCaptcha = generateCaptcha();
+    if (remaining < 50) {
+      counter.style.color = remaining < 20 ? 'red' : 'orange';
+    } else {
+      counter.style.color = '#666';
+    }
+  }
+
+  // Инициализация формы
+  document.addEventListener('DOMContentLoaded', function() {
+    // Капча
+    let captchaText = generateCaptcha();
+    document.getElementById('captcha').textContent = captchaText;
     
-    // 3. Обновление капчи
     document.getElementById('captchaRefresh').addEventListener('click', function() {
-      currentCaptcha = generateCaptcha();
+      captchaText = generateCaptcha();
+      document.getElementById('captcha').textContent = captchaText;
       document.getElementById('captchaInput').value = '';
-      document.getElementById('captchaError').textContent = '';
     });
-    
-    // 4. Отправка формы
+
+    // Счетчик символов
+    document.getElementById('message').addEventListener('input', updateCharCounter);
+    updateCharCounter();
+
+    // Валидация и отправка формы
     document.getElementById('askForm').addEventListener('submit', function(e) {
       e.preventDefault();
       
       // Проверка капчи
       const userInput = document.getElementById('captchaInput').value.trim();
-      const errorElement = document.getElementById('captchaError');
-      
-      if(userInput.toUpperCase() !== currentCaptcha) {
-        errorElement.textContent = 'Неверный проверочный код';
-        currentCaptcha = generateCaptcha(); // Генерируем новую капчу
+      if (userInput !== captchaText) {
+        document.getElementById('captchaError').textContent = 'Неверный проверочный код';
+        captchaText = generateCaptcha();
+        document.getElementById('captcha').textContent = captchaText;
         document.getElementById('captchaInput').value = '';
         return;
       }
       
-      errorElement.textContent = '';
+      document.getElementById('captchaError').textContent = '';
       
-      // Показываем лоадер
-      const submitBtn = e.target.querySelector('button[type="submit"]');
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Отправка...';
-      
+      // Сбор данных формы
+      const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        message: document.getElementById('message').value
+      };
+
       // Отправка через EmailJS
-      emailjs.sendForm('ваш-service-id', 'ваш-template-id', e.target)
-        .then(() => {
-          alert('Ваш вопрос успешно отправлен!');
-          e.target.reset();
-          currentCaptcha = generateCaptcha(); // Новая капча после отправки
-        }, (error) => {
-          alert('Ошибка при отправке: ' + error.text);
-        })
-        .finally(() => {
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Отправить вопрос';
+      emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formData)
+        .then(function(response) {
+          alert('Ваш вопрос успешно отправлен! Я свяжусь с вами в ближайшее время.');
+          document.getElementById('askForm').reset();
+          captchaText = generateCaptcha();
+          document.getElementById('captcha').textContent = captchaText;
+          updateCharCounter();
+        }, function(error) {
+          alert('Произошла ошибка при отправке. Пожалуйста, попробуйте еще раз или свяжитесь со мной другим способом.');
+          console.error('EmailJS Error:', error);
         });
     });
-  </script>
+  });
+</script>
 
   <script>
   // Установка текущего года в футере
