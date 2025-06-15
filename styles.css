@@ -145,10 +145,7 @@ h1 i {
     padding: 1em 15px; /* Добавляем внутренние отступы */
   }
 
-  .campaign-box::before,
-  .campaign-box::after {
-    display: none;
-  }
+
 
 /* Стили для формы */
 #askForm {
