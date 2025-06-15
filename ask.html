@@ -123,7 +123,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script>
   // Инициализация EmailJS (замените YOUR_USER_ID на ваш реальный ID)
-  emailjs.init('YOUR_USER_ID');
+  emailjs.init('1lul3eYNv4_lSG11d');
 
   // Генерация сложной капчи
   function generateCaptcha() {
@@ -172,7 +172,7 @@
       // Проверка капчи
       const userInput = document.getElementById('captchaInput').value.trim();
       if (userInput !== captchaText) {
-        document.getElementById('captchaError').textContent = 'Неверный проверочный код';
+        document.getElementById('captchaError').textContent = 'Incorrect verification code';
         captchaText = generateCaptcha();
         document.getElementById('captcha').textContent = captchaText;
         document.getElementById('captchaInput').value = '';
@@ -190,15 +190,15 @@
       };
 
       // Отправка через EmailJS
-      emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formData)
+      emailjs.send('service_drpezxf', 'template_of3ejpo', formData)
         .then(function(response) {
-          alert('Ваш вопрос успешно отправлен! Я свяжусь с вами в ближайшее время.');
+          alert('Your question has been sent successfully!');
           document.getElementById('askForm').reset();
           captchaText = generateCaptcha();
           document.getElementById('captcha').textContent = captchaText;
           updateCharCounter();
         }, function(error) {
-          alert('Произошла ошибка при отправке. Пожалуйста, попробуйте еще раз или свяжитесь со мной другим способом.');
+          alert('An error occurred while sending. Please try again or contact me by another method.');
           console.error('EmailJS Error:', error);
         });
     });
