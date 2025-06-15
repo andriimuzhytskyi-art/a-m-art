@@ -36,24 +36,29 @@
 <p>Have a question or thought? Send it here — I’ll read every message and do my best to reply.</p>
   
 <form id="askForm">
-  <div class="form-group">
-    <label for="name">Your Name *</label>
-    <input type="text" id="name" name="name" required maxlength="50">
+  <div class="form-row">
+    <div class="form-group">
+      <label for="name">Your Name *</label>
+      <input type="text" id="name" name="name" required maxlength="50" placeholder="Enter your name">
+    </div>
+    
+    <div class="form-group">
+      <label for="email">Email *</label>
+      <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+    </div>
+    
+    <div class="form-group">
+      <label for="phone">Phone (optional)</label>
+      <input type="tel" id="phone" name="phone" pattern="[\+]\d{1,3}\d{7,14}" placeholder="+490123456789">
+    </div>
   </div>
   
-  <div class="form-group">
-    <label for="email">Email *</label>
-    <input type="email" id="email" name="email" required>
-  </div>
-  
-  <div class="form-group">
-    <label for="phone">Phone (optional)</label>
-    <input type="tel" id="phone" name="phone" pattern="[\+]\d{1,3}\d{7,14}" placeholder="+490123456789">
-  </div>
-  
-  <div class="form-group">
-    <label for="message">Your Question *<span id="charCounter">(0/500)</span></label>
-    <textarea id="message" name="message" rows="5" required maxlength="500"></textarea>
+  <div class="form-group question-group">
+    <div class="question-header">
+      <label for="message">Your Question *</label>
+      <span id="charCounter">(0/500)</span>
+    </div>
+    <textarea id="message" name="message" rows="5" required maxlength="500" placeholder="Type your question here..."></textarea>
   </div>
   
   <div class="form-group">
@@ -61,12 +66,12 @@
     <div class="captcha-container">
       <span class="captcha-code" id="captcha"></span>
       <button type="button" id="captchaRefresh" title="Refresh Code">↻</button>
-      <input type="text" id="captchaInput" placeholder="Enter the Code" required>
+      <input type="text" id="captchaInput" placeholder="Enter the code exactly" required>
     </div>
     <div id="captchaError" class="error"></div>
   </div>
   
-  <button type="submit">Submit Question</button>
+  <button type="submit" class="campaign-button">Submit Question</button>
 </form>
 
 <div class="social-row">
