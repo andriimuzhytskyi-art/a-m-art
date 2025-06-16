@@ -642,22 +642,24 @@ footer a:hover {
 }
 
 /*Crypto*/
- .crypto-container {
-            display: flex;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            font-family: Arial, sans-serif;
-        }
+.crypto-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 900px; 
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    gap: 20px; 
+}
 
-        .crypto-column {
-            flex: 0 0 32%;
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+.crypto-column {
+    flex: 1;
+    min-width: 0;
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
         .crypto-item {
             text-align: center;
@@ -739,9 +741,10 @@ footer a:hover {
 @media (max-width: 768px) {
     .crypto-container {
         flex-direction: column;
+        gap: 20px; 
     }
     .crypto-column {
-        flex: 0 0 100%;
-        margin-bottom: 20px;
+        width: 100%;
+        margin-bottom: 0; 
     }
 }
