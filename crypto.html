@@ -37,14 +37,11 @@
 Every contribution means a lot — thank you!</p>
 
 
-    <div class="crypto-container">
+      <div class="crypto-container">
         <!-- Первая колонка (Биткоин) -->
         <div class="crypto-column">
             <div class="crypto-item">
-                <div class="qr-code">
-                    <!-- Замените src на ваш QR-код -->
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=bitcoin:1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa" alt="Bitcoin QR Code">
-                </div>
+                <div class="qr-code" id="btc-qr"></div>
                 <div class="address-container">
                     <span class="wallet-address">1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa</span>
                     <span class="copy-icon" onclick="copyToClipboard('1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa')">⎘</span>
@@ -57,9 +54,7 @@ Every contribution means a lot — thank you!</p>
         <!-- Вторая колонка (Ethereum) -->
         <div class="crypto-column">
             <div class="crypto-item">
-                <div class="qr-code">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=ethereum:0x71C7656EC7ab88b098defB751B7401B5f6d8976F" alt="Ethereum QR Code">
-                </div>
+                <div class="qr-code" id="eth-qr"></div>
                 <div class="address-container">
                     <span class="wallet-address">0x71C7656EC7ab88b098defB751B7401B5f6d8976F</span>
                     <span class="copy-icon" onclick="copyToClipboard('0x71C7656EC7ab88b098defB751B7401B5f6d8976F')">⎘</span>
@@ -72,9 +67,7 @@ Every contribution means a lot — thank you!</p>
         <!-- Третья колонка (USDT) -->
         <div class="crypto-column">
             <div class="crypto-item">
-                <div class="qr-code">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=ethereum:0xdAC17F958D2ee523a2206206994597C13D831ec7" alt="USDT QR Code">
-                </div>
+                <div class="qr-code" id="usdt-qr"></div>
                 <div class="address-container">
                     <span class="wallet-address">0xdAC17F958D2ee523a2206206994597C13D831ec7</span>
                     <span class="copy-icon" onclick="copyToClipboard('0xdAC17F958D2ee523a2206206994597C13D831ec7')">⎘</span>
@@ -223,7 +216,33 @@ Every contribution means a lot — thank you!</p>
 });
 </script>
 
+<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    
 <script>
+        // Генерация QR-кодов
+        document.addEventListener('DOMContentLoaded', function() {
+            // BTC QR
+            new QRCode(document.getElementById("btc-qr"), {
+                text: "bitcoin:1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+                width: 150,
+                height: 150
+            });
+            
+            // ETH QR
+            new QRCode(document.getElementById("eth-qr"), {
+                text: "ethereum:0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+                width: 150,
+                height: 150
+            });
+            
+            // USDT QR
+            new QRCode(document.getElementById("usdt-qr"), {
+                text: "ethereum:0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                width: 150,
+                height: 150
+            });
+        });
+
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(function() {
                 showNotification();
