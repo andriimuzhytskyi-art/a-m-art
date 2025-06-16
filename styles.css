@@ -734,3 +734,12 @@ footer a:hover {
         .show {
             opacity: 1;
         }
+@media (max-width: 768px) {
+    .crypto-container {
+        flex-direction: column;
+    }
+    .crypto-column {
+        flex: 0 0 100%;
+        margin-bottom: 20px;
+    }
+}
